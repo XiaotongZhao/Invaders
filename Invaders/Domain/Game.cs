@@ -23,7 +23,7 @@ namespace Invaders.Domain
         private Invader[] invaders;
         private int[,] invaderLocation;
         private Player player;
-
+        private Pen[] pens;
         public Game(Bitmap[,] bitmaps)
         {
             score = 0;
@@ -34,6 +34,7 @@ namespace Invaders.Domain
             this.CreateInvadersAndPlayer();
             invaderShots = new List<Shot>();
             random = new Random();
+            pens = new Pen[] { Pens.SkyBlue, Pens.White, Pens.Yellow, Pens.Green, Pens.Blue };
         }
 
         public int Life
@@ -179,8 +180,6 @@ namespace Invaders.Domain
 
         public void Twinkle(Graphics g, int width, int height)
         {
-            var pens = new Pen[] { Pens.SkyBlue, Pens.White, Pens.Yellow, Pens.Green, Pens.Blue };
-
             for (var i = 0; i < starCount; i++)
             {
                 var randomIndex = random.Next(0, pens.Length - 1);
